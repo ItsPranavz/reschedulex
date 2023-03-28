@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Time Slots</h2>
+
+  <table>
+    <tr>
+      <th>Time</th>
+      <th>Venue 1</th>
+      <th>Venue 2</th>
+      <th>Venue 3</th>
+      <th>Venue 4</th>
+      <th>Venue 5</th>
+    </tr>
+    <tr>
+      <td>9:00 - 10:00</td>
+      <td id="slot1">Available</td>
+      <td id="slot2">Available</td>
+      <td id="slot3">Available</td>
+      <td id="slot4">Available</td>
+      <td id="slot5">Available</td>
+    </tr>
+    <tr>
+      <td>10:00 - 11:00</td>
+      <td id="slot6">Available</td>
+      <td id="slot7">Available</td>
+      <td id="slot8">Available</td>
+      <td id="slot9">Available</td>
+      <td id="slot10">Available</td>
+    </tr>
+
+    <!-- Add more rows and columns as needed -->
+
+  </table>
+
+  <script>
+
+    // Add event listener to table cells
+    var cells = document.getElementsByTagName("TD");
+    for (var i = 0; i < cells.length; i++) {
+      cells[i].addEventListener("click", function() {
+        if (this.style.backgroundColor === "red") {
+          this.style.backgroundColor = "";
+          this.innerHTML = "Available";
+        } else {
+          // Reset all cells to white
+          for (var j = 0; j < cells.length; j++) {
+            cells[j].style.backgroundColor = "";
+            if (cells[j].innerHTML === "") {
+              cells[j].innerHTML = "Available";
+            }
+          }
+          this.style.backgroundColor = "red";
+          if (this.innerHTML === "Available") {
+            var classTaken = prompt("Please enter the class taken:");
+            if (classTaken != null) {
+              this.innerHTML = classTaken;
+            }
+          }
+        }
+      });
+    }
+
+  </script>
+
+</body>
+</html>
